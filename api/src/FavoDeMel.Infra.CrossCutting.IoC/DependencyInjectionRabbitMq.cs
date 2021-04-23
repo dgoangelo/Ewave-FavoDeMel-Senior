@@ -13,21 +13,8 @@ namespace FavoDeMel.Infra.CrossCutting.IoC
             {
                 bus.UsingRabbitMq((context, config) =>
                 {
-                    config.Host("rabbitmq://guest:guest@rabbitmq:5672");
+                    config.Host(appSettings.RabbitMq.Url);
                 });
-
-
-                //bus.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
-                //{
-
-
-                //    //config.Host(new Uri(appSettings.RabbitMq.Url), h =>
-                //    //{
-                //    //    h.Username(appSettings.RabbitMq.Usuario);
-                //    //    h.Password(appSettings.RabbitMq.Senha);
-                //    //});
-                //    config.Host("rabbitmq://guest:guest@rabbitmq:5672");
-                //}));
             });
 
             services.AddSingleton<IPublishEndpoint>(provider => provider.GetRequiredService<IBusControl>());
