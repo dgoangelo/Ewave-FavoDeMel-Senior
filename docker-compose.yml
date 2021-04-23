@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  api:
+    container_name: api
+    image: ${DOCKER_REGISTRY-}favodemelapi
+    build:
+      context: ./api
+      dockerfile: src/FavoDeMel.API/Dockerfile
+    depends_on:
+        - database
+        - rabbitmq
+    networks:
+        - favodemel-networks
+
+  database:
+    container_name: sqlserver 
+    restart: always
+    build:
+      context: ./database
+      dockerfile: Dockerfile    
+    networks:
+        - favodemel-networks
+    volumes:
+      - dbdata:/var/opt/mssql/data
+
+  rabbitmq:
+    image: masstransit/rabbitmq
+    container_name: rabbitmq
+    networks:
+        - favodemel-networks
+
+networks:
+  favodemel-networks:
+    driver: bridge
+
+volumes:
+  dbdata:

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.1.8" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FavoDeMel.Domain\FavoDeMel.Domain.csproj" />
+    <ProjectReference Include="..\FavoDeMel.Infra.Application\FavoDeMel.Infra.Application.csproj" />
+    <ProjectReference Include="..\FavoDeMel.Infra.Dapper\FavoDeMel.Infra.Dapper.csproj" />
+    <ProjectReference Include="..\FavoDeMel.Infra.EF.Repository\FavoDeMel.Infra.EF.Repository.csproj" />
+  </ItemGroup>
+</Project>
